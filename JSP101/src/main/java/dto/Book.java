@@ -19,6 +19,10 @@ public class Book implements Serializable {
 	private long unitsInStock; //재고개수
 	private String releaseDate; // 출판년월일
 	private String condition; // 신제품 or 구제품 or 리퍼브제품
+	private String filename;
+	
+	
+	
 	
 	public Book() {
 	}
@@ -43,6 +47,14 @@ public class Book implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 
 	public int getUnitPrice() {
