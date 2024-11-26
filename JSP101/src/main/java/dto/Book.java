@@ -18,15 +18,12 @@ public class Book implements Serializable {
 	private String category; // 분류
 	private long unitsInStock; //재고개수
 	private String releaseDate; // 출판년월일
-	private String condition; // 신재품 or 구제품 or 리퍼브제품
+	private String condition; // 신제품 or 구제품 or 리퍼브제품
 	
 	public Book() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Book(String bookId, String name, int unitPrice) {
-		super();
 		this.bookId = bookId;
 		this.name = name;
 		this.unitPrice = unitPrice;

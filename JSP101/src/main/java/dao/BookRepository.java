@@ -8,6 +8,15 @@ public class BookRepository {
 	
 	
 	private ArrayList<Book> listOfBooks = new ArrayList<>();
+	private static BookRepository instance = new BookRepository();
+	
+	
+
+	
+
+	public static BookRepository getInstance() {
+		return instance;
+	}
 
 
 	public BookRepository() {
@@ -63,7 +72,7 @@ public class BookRepository {
 	
 	
 	
-	public Book getbookById(String bookId) {
+	public Book getBookById(String bookId) {
 		
 		
 		Book bookById = null;
@@ -88,6 +97,16 @@ public class BookRepository {
 		
 	}
 	
+	
+	
+	
+	public void addBook(Book book) {
+		
+		
+		listOfBooks.add(book);
+		
+		
+	}
 	
 	
 	
