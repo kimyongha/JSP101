@@ -8,6 +8,15 @@ public class BookRepository {
 	
 	
 	private ArrayList<Book> listOfBooks = new ArrayList<>();
+	private static BookRepository instance = new BookRepository();
+	
+	
+
+	
+
+	public static BookRepository getInstance() {
+		return instance;
+	}
 
 
 	public BookRepository() {
@@ -20,6 +29,7 @@ public class BookRepository {
 		book1.setCategory("IT모바일");
 		book1.setUnitsInStock(1000);
 		book1.setReleaseDate("2022/10/06");
+		book1.setFilename("ISBN1234.jpg");
 		
 		
 		
@@ -31,7 +41,7 @@ public class BookRepository {
 		book2.setCategory("IT모바일");
 		book2.setUnitsInStock(1000);
 		book2.setReleaseDate("2022/01/01");
-		
+		book2.setFilename("ISBN1235.jpg");
 		
 		Book book3 = new Book("ISBN1236", "파이썬 프로그래밍", 30000);
 		
@@ -41,6 +51,8 @@ public class BookRepository {
 		book3.setCategory("IT모바일");
 		book3.setUnitsInStock(1000);
 		book3.setReleaseDate("2022/01/01");
+		book3.setFilename("ISBN1236.jpg");
+		
 		
 		listOfBooks.add(book1);
 		listOfBooks.add(book2);
@@ -63,7 +75,7 @@ public class BookRepository {
 	
 	
 	
-	public Book getbookById(String bookId) {
+	public Book getBookById(String bookId) {
 		
 		
 		Book bookById = null;
@@ -88,6 +100,16 @@ public class BookRepository {
 		
 	}
 	
+	
+	
+	
+	public void addBook(Book book) {
+		
+		
+		listOfBooks.add(book);
+		
+		
+	}
 	
 	
 	
