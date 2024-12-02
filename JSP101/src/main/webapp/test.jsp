@@ -8,16 +8,5 @@
 </head>
 <body>
 
-
-<form action="abc.do" method="post">
-
-아이디 <input type="text" name="id"/> <br />
-비밀번호 <input type="password" name="passwd" /><br />
-
-<input type="submit" value="확인" />
-
-
-</form>
-
 </body>
 </html>

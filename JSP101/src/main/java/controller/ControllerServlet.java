@@ -15,6 +15,14 @@ public class ControllerServlet extends HttpServlet {
 	
 	protected static final long serialVersionUID = 1L;
 	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		doPost(req, resp);
+		
+		
+	}
+	
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,6 +34,8 @@ public class ControllerServlet extends HttpServlet {
 		String passwd = req.getParameter("passwd");
 		
 		
+		System.out.println(id + " " + passwd);
+		
 		
 		LoginBean bean = new LoginBean();
 		bean.setId(id);
@@ -35,35 +45,28 @@ public class ControllerServlet extends HttpServlet {
 		
 		boolean status = bean.validator();
 		
+		System.out.println(status);
+		
+		
 		if(status) {
 			
-			RequestDispatcher rd = req.getRequestDispatcher("mvc-success.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("/241202/mvc_success.jsp");
 			rd.forward(req, resp);
 			
 		} else {
 			
-			RequestDispatcher rd = req.getRequestDispatcher("mvc-error.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("/241202/mvc_error.jsp");
 			rd.forward(req, resp);
-			
-			
 			
 		}
 		
 		
-		
 	}
 	
 	
 	
 	
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		//doPost(req, resp);
-		
-		
-	}
-	
 	
 	
 
