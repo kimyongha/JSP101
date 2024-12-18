@@ -23,7 +23,6 @@ try{
 	
 
 	
-	
 	String page_param = request.getParameter("page_no");
 	
 	int page_no = 0;
