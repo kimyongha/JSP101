@@ -1,5 +1,7 @@
 package action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,21 +56,28 @@ public class BoardWriteProAction implements Action {
 				
 		
 		
-		
+		if(isWriteSuccess) {
+			
+			response.setContentType("text/html; charset=UTF-8");
+			
+			PrintWriter out = response.getWriter();
+			
+			String msg = "<script>";
+			msg += "alert('등록실패');";
+			msg += "history.back();";
+			msg += "</script>";
+			out.println(msg);
+	
+			
+		} else {
+			
+			forward = new ActionForward();
+			forward.setRedirect(true);
+			forward.setPath("/boardList.bo");
+			
+		}
 		
 		return forward;;
-		
-		
-		
-		
-		
-		
-		
-		//boardBean.setBo_re_ref( multi.getParameter("bo_re_ref"));
-		//boardBean.setBo_re_seq(multi.getParameter("bo_re_seq"));
-		//boardBean.setBo_readcount(multi.getParameter("bo_readcount"));
-		
-		
 		
 		
 	}

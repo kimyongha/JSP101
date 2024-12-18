@@ -11,14 +11,12 @@ public class BoardBean {
 	private String bo_content;
 	private String bo_file;
 	private int bo_re_ref;
-	private int bo_lev;
+	private int bo_re_lev;
 	private int bo_re_seq;
 	private int bo_readcount;
-	private Date bo_date;
 	
 	
 	// POJO CLASS
-	
 	public int getBo_num() {
 		return bo_num;
 	}
@@ -61,11 +59,11 @@ public class BoardBean {
 	public void setBo_re_ref(int bo_re_ref) {
 		this.bo_re_ref = bo_re_ref;
 	}
-	public int getBo_lev() {
-		return bo_lev;
+	public int getBo_re_lev() {
+		return bo_re_lev;
 	}
-	public void setBo_lev(int bo_lev) {
-		this.bo_lev = bo_lev;
+	public void setBo_re_lev(int bo_re_lev) {
+		this.bo_re_lev = bo_re_lev;
 	}
 	public int getBo_re_seq() {
 		return bo_re_seq;
@@ -79,16 +77,9 @@ public class BoardBean {
 	public void setBo_readcount(int bo_readcount) {
 		this.bo_readcount = bo_readcount;
 	}
-	public Date getBo_date() {
-		return bo_date;
-	}
-	public void setBo_date(Date bo_date) {
-		this.bo_date = bo_date;
-	}
 	
 	
-	
-	
+
 	
 	 
 	
