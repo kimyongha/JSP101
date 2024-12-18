@@ -1,0 +1,226 @@
+package controller;
+
+import java.io.IOException;
+import java.rmi.server.ServerCloneException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import action.Action;
+import vo.ActionForward;
+
+
+
+@WebServlet("*.bo")
+public class BoardFrontController extends HttpServlet {
+	
+	
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		String requestURI = request.getRequestURI();
+		String contextPath = request.getContextPath();
+		String command = requestURI.substring(contextPath.length());
+		
+		ActionForward forward = null;
+		Action action = null;
+		
+		
+		
+		if(command.equals("/boardWriteForm.bo")) {
+			
+			forward = new ActionForward();
+			forward.setPath("/board/qna_board_write");
+			
+		} else if(command.equals("/boardWritePro.bo")) {
+			
+			action = new BoardWriteProAction();
+			
+			try {
+				
+				forward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				
+			}
+			
+		} else if(command.equals("/boardList.bo")) {
+			
+			action = new BoardListAction();
+			
+			try {
+				
+				forward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				
+			}
+			
+		} else if(command.equals("/boardDetail.bo")) {
+			
+			action = new BoardDetailAction();
+			
+			try {
+				
+				forward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				
+			}
+			
+		} else if(command.equals("/boardReplyForm.bo")) {
+			
+			action = new BoardReplyFormAction();
+			
+			try {
+				
+				forward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				
+			}
+			
+		} else if(command.equals("/boardReplyPro.bo")) {
+			
+			action = new BoardReplyProAction();
+			
+			try {
+				
+				forward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				
+			}
+			
+		} else if(command.equals("/boardModifyForm.bo")) {
+			
+			action = new BoardModifyFormAction();
+			
+			try {
+				
+				forward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				
+			}
+			
+		} else if(command.equals("/boardModifyPro.bo")) {
+			
+			action = new BoardModifyProAction();
+			
+			try {
+				
+				forward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				
+			}
+			
+		}  else if(command.equals("/boardDeleteForm.bo")) {
+			
+			
+			String nowPage = request.getParameter("page");
+			request.setAttribute("page", nowPage);
+			
+			int bo_num = Integer.parseInt(request.getParameter("bo_num"));
+			
+			forward = new ActionForward();
+			forward.setPath("/board/qna_board_delete.jsp");
+			
+			
+			
+		} else if(command.equals("/boardDeletePro.bo")) {
+			
+			action = new BoardDeleteProAction();
+			
+			try {
+				
+				forward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				
+			}
+			
+		}
+		
+		
+		
+		
+		if(forward != null) {
+			
+			if(forward.isRedirect()) {
+				
+				response.sendRedirect(forward.getPath());
+				
+			} else {
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
+				dispatcher.forward(request, response);
+				
+			}
+			
+		}
+		
+		
+		
+	}
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		doProcess(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
+		doProcess(req, resp);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}
