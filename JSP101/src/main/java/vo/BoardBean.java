@@ -16,6 +16,7 @@ public class BoardBean {
 	private int bo_readcount;
 	
 	
+	
 	// POJO CLASS
 	public int getBo_num() {
 		return bo_num;
