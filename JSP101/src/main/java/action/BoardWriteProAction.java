@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import svc.BoardWriteProService;
 import vo.ActionForward;
 import vo.BoardBean;
 
@@ -77,7 +78,7 @@ public class BoardWriteProAction implements Action {
 			
 		}
 		
-		return forward;;
+		return forward;
 		
 		
 	}

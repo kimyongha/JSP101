@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import svc.BoardListService;
 import vo.ActionForward;
 import vo.BoardBean;
 import vo.PageInfo;

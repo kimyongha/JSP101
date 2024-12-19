@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import svc.BoardReplyProService;
 import vo.ActionForward;
 import vo.BoardBean;
 
@@ -29,7 +30,7 @@ public class BoardReplyProAction implements Action {
 		article.setBo_re_seq(Integer.parseInt(request.getParameter("bo_re_seq")));
 		
 		
-		BoardReplyProService boardReplyProService = new BoardReplyService();
+		BoardReplyProService boardReplyProService = new BoardReplyProService();
 		boolean isReplySuccess = boardReplyProService.replyArticle(article);
 		
 		if(isReplySuccess) {

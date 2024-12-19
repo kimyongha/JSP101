@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import svc.BoardDeleteProService;
 import vo.ActionForward;
 
 public class BoardDeleteProAction implements Action {

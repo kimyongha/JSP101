@@ -14,10 +14,7 @@ public class BoardBean {
 	private int bo_re_lev;
 	private int bo_re_seq;
 	private int bo_readcount;
-	
-	
-	
-	// POJO CLASS
+	private Date bo_date;
 	public int getBo_num() {
 		return bo_num;
 	}
@@ -78,9 +75,17 @@ public class BoardBean {
 	public void setBo_readcount(int bo_readcount) {
 		this.bo_readcount = bo_readcount;
 	}
+	public Date getBo_date() {
+		return bo_date;
+	}
+	public void setBo_date(Date bo_date) {
+		this.bo_date = bo_date;
+	}
 	
 	
-
+	
+	// POJO CLASS
+	
 	
 	 
 	
