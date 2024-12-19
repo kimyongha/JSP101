@@ -2,8 +2,6 @@ package vo;
 
 public class PageInfo {
 	
-	
-	
 	private int page;
 	private int maxPage;
 	private int startPage;

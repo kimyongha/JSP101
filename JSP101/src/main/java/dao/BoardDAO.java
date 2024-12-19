@@ -40,15 +40,15 @@ public class BoardDAO {
 	
 	public int selectListCount() {
 		
-		int listCount = 0;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		int listCount = 0;
 		
 		
 		try {
 			
-			String sql = "select count(*) as cnt from board";
+			String sql = "select count(*) from board";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -57,7 +57,7 @@ public class BoardDAO {
 			
 		} catch (Exception e) {
 			
-			System.out.println("getListCount에서 오류 발생 ");
+			System.out.println("getListCount에서 오류 발생 " + e);
 			
 		} finally {
 			

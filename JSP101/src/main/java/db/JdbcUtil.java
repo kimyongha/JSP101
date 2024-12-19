@@ -15,10 +15,11 @@ public class JdbcUtil {
 		
 		Connection conn = null;
 		
+		
 		try {
 			
 			Context initCtx = new InitialContext();
-			Context envCtx = (Context) initCtx.lookup("java:comp/ev");
+			Context envCtx = (Context) initCtx.lookup("java:comp/env"); 
 			DataSource ds = (DataSource) envCtx.lookup("jdbc:/MySQLDB");
 			
 			conn = ds.getConnection();

@@ -15,6 +15,10 @@ public class BoardBean {
 	private int bo_re_seq;
 	private int bo_readcount;
 	private Date bo_date;
+	
+	
+	
+	
 	public int getBo_num() {
 		return bo_num;
 	}

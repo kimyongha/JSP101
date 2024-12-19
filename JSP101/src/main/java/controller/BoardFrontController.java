@@ -40,6 +40,10 @@ public class BoardFrontController extends HttpServlet {
 		
 		
 		
+		System.out.println(command);
+		
+		
+		
 		if(command.equals("/boardWriteForm.bo")) {
 			
 			forward = new ActionForward();
@@ -59,7 +63,7 @@ public class BoardFrontController extends HttpServlet {
 				
 			}
 			
-		} else if(command.equals("/boardList.bo")) {
+		} else if(command.equals("/241218/board/boardList.bo")) {
 			
 			action = new BoardListAction();
 			
