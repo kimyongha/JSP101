@@ -14,6 +14,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="../css/common.css" />
 </head>
 <body>
@@ -47,6 +48,17 @@ int endPage = pageInfo.getEndPage();
 
 <table>
 
+
+<colgroup>
+<col style="width:10%"/>
+<col style="width:*"/>
+<col style="width:10%"/>
+<col style="width:10%"/>
+<col style="width:15%"/>
+
+
+</colgroup>
+
 <tr>
 <th>번호</th>
 <th>제목</th>
@@ -66,7 +78,7 @@ int endPage = pageInfo.getEndPage();
 	
 		<td><%= articleList.get(i).getBo_num() %></td>
 		
-		<td>
+		<td class="sbjct">
 		<% if(articleList.get(i).getBo_re_lev() != 0) { %>
 		
 		
@@ -85,7 +97,7 @@ int endPage = pageInfo.getEndPage();
 		<% } // endif; %>
 		
 		
-		<a href="boardDetail.bo?board_num=<%=articleList.get(i).getBo_num()%>&page=<%=nowPage%>"><%= articleList.get(i).getBo_subject() %></a>
+		<a href="boardDetail.bo?bo_num=<%=articleList.get(i).getBo_num()%>&page=<%=nowPage%>"><%= articleList.get(i).getBo_subject() %></a>
 	
 		</td>
 		
@@ -116,51 +128,61 @@ int endPage = pageInfo.getEndPage();
 
 
 
-<div class="pagination">
+<ul class="list_btns">
 
-<ul>
-
-	<% if(nowPage <= 1) { %>
-	
-	<li><a href="javascipt:;">[이전]</a></li>
-	
-	<% } %>
-	
-	<% if(nowPage >= 2) { %>
-	
-	<li><a href="boardList.bo?page=<%= nowPage - 1%>">[이전]</a></li>
-	
-	<% } %>
-	
-	<% for(int a=startPage; a<=startPage; a++) { %>
-	
-		<% if(a == nowPage) { %>
-		
-		<li><a href="javascript:;">[<%=a %>]</a></li>
-		
-		<% } else { %>
-		
-		<li><a href="boardList.bo?page=<%=a%>">[<%=a %>]</a></li>
-		
-		<% } %>
-	
-	<% } %>
-	
-	
-	<% if(nowPage >= maxPage) { %>
-	
-		<li><a href="javascript:;">[다음]</a></li>
-		
-	<% } else { %>
-	
-		<li><a href="boardList.bo?page=<%= nowPage+1 %>">[다음]</a></li>
-	
-	<% } %>
+<li><a href="boardWriteForm.bo">등록</a></li>
 </ul>
 
 
-</div>
 
+
+
+<%
+
+String url = "boardList.bo";
+String firstLink = url + "?page=1";
+String prevLink = (nowPage > 1) ? url + "?page=" + (nowPage - 1) : "";
+String nextLink = (nowPage < endPage) ? url + "?page=" + (nowPage + 1) : "";
+String endLink = url + "?page=" + endPage;
+
+
+%>
+
+<nav aria-label="Page navigation example" class="board_pagination">
+	<ul class="pagination">
+	
+	
+		<li class="page-item">
+		<a class="page-link" href="<%= firstLink %>"
+			aria-label="fisrt"> 
+			<span aria-hidden="true">&laquo;</span>
+		</a>
+		</li>
+		
+		
+		<li class="page-item"><a class="page-link" href="<%= prevLink %>"
+			aria-label="Previous"> <span aria-hidden="true">&lsaquo;</span>
+		</a></li>
+	
+	<% for(int i=startPage; i<=endPage; i++) { %>
+
+		<li class="page-item <% if(i == nowPage) { %>on<%} %>"><a href="boardList.bo?page=<%= i%>" class="page-link"><%= i %></a></li>
+		
+	<% } %>
+	
+		
+		
+		
+		<li class="page-item"><a class="page-link" href="<%= nextLink %>"
+			aria-label="Next"> <span aria-hidden="true">&rsaquo;</span>
+		</a></li>
+
+		<li class="page-item"><a class="page-link" href="<%= endLink %>"
+			aria-label="end"> <span aria-hidden="true">&raquo;</span>
+		</a></li>
+
+	</ul>
+</nav>
 
 
 

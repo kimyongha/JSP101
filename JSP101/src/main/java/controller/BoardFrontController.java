@@ -39,31 +39,9 @@ public class BoardFrontController extends HttpServlet {
 		Action action = null;
 		
 		
+		System.out.println("[BoardFrontController] : " + command);
 		
-		System.out.println(command);
-		
-		
-		
-		if(command.equals("/boardWriteForm.bo")) {
-			
-			forward = new ActionForward();
-			forward.setPath("/board/qna_board_write.jsp");
-			
-		} else if(command.equals("/boardWritePro.bo")) {
-			
-			action = new BoardWriteProAction();
-			
-			try {
-				
-				forward = action.execute(request, response);
-				
-			} catch (Exception e) {
-				
-				e.printStackTrace();
-				
-			}
-			
-		} else if(command.equals("/241218/board/boardList.bo")) {
+		if(command.equals("/241218/board/boardList.bo")) { // list
 			
 			action = new BoardListAction();
 			
@@ -77,9 +55,84 @@ public class BoardFrontController extends HttpServlet {
 				
 			}
 			
-		} else if(command.equals("/boardDetail.bo")) {
+		} else if(command.equals("/241218/board/boardDetail.bo")) { // view
 			
 			action = new BoardDetailAction();
+			
+			try {
+				
+				forward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				
+			}
+			
+		} else if(command.equals("/241218/board/boardWriteForm.bo")) { // write
+			
+			forward = new ActionForward();
+			forward.setPath("/241218/board/qna_board_write.jsp");
+			
+		} else if(command.equals("/241218/board/boardWritePro.bo")) {
+			
+			action = new BoardWriteProAction();
+			
+			try {
+				
+				forward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				
+			}
+			
+		} else if(command.equals("/241218/board/boardModifyForm.bo")) { // 게시글 수정 페이지
+			
+			action = new BoardModifyFormAction();
+			
+			try {
+				
+				forward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				
+			}
+			
+		} else if(command.equals("/241218/board/boardModifyPro.bo")) { // 게시글 수정 프로세스 
+			
+			action = new BoardModifyProAction();
+			
+			try {
+				
+				forward = action.execute(request, response);
+				
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				
+			}
+			
+		} else if(command.equals("/241218/board/boardDeleteForm.bo")) { // delete form page 
+			
+			
+			String nowPage = request.getParameter("page");
+			int bo_num = Integer.parseInt(request.getParameter("bo_num"));
+			
+			request.setAttribute("page", nowPage);
+			request.setAttribute("bo_num", bo_num);
+			
+			forward = new ActionForward();
+			forward.setPath("/241218/board/qna_board_delete.jsp");
+			
+			
+			
+		} else if(command.equals("/241218/board/boardDeletePro.bo")) { // delete process 
+			
+			action = new BoardDeleteProAction();
 			
 			try {
 				
@@ -105,7 +158,7 @@ public class BoardFrontController extends HttpServlet {
 				
 			}
 			
-		} else if(command.equals("/boardReplyPro.bo")) {
+		}  else if(command.equals("/241218/board/boardReplyPro.bo")) { 
 			
 			action = new BoardReplyProAction();
 			
@@ -119,63 +172,7 @@ public class BoardFrontController extends HttpServlet {
 				
 			}
 			
-		} else if(command.equals("/boardModifyForm.bo")) {
-			
-			action = new BoardModifyFormAction();
-			
-			try {
-				
-				forward = action.execute(request, response);
-				
-			} catch (Exception e) {
-				
-				e.printStackTrace();
-				
-			}
-			
-		} else if(command.equals("/boardModifyPro.bo")) {
-			
-			action = new BoardModifyProAction();
-			
-			try {
-				
-				forward = action.execute(request, response);
-				
-			} catch (Exception e) {
-				
-				e.printStackTrace();
-				
-			}
-			
-		}  else if(command.equals("/boardDeleteForm.bo")) {
-			
-			
-			String nowPage = request.getParameter("page");
-			request.setAttribute("page", nowPage);
-			
-			int bo_num = Integer.parseInt(request.getParameter("bo_num"));
-			
-			forward = new ActionForward();
-			forward.setPath("/board/qna_board_delete.jsp");
-			
-			
-			
-		} else if(command.equals("/boardDeletePro.bo")) {
-			
-			action = new BoardDeleteProAction();
-			
-			try {
-				
-				forward = action.execute(request, response);
-				
-			} catch (Exception e) {
-				
-				e.printStackTrace();
-				
-			}
-			
-		}
-		
+		} 
 		
 		
 		

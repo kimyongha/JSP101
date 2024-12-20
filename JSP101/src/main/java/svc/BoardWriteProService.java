@@ -13,7 +13,6 @@ import vo.BoardBean;
 public class BoardWriteProService {
 	
 	
-	
 	public boolean registArticle(BoardBean boardBean) throws Exception {
 		
 		boolean isWriteSuccess = false;
@@ -28,6 +27,7 @@ public class BoardWriteProService {
 			
 			commit(conn);
 			isWriteSuccess = true;
+			
 		} else {
 			
 			rollback(conn);

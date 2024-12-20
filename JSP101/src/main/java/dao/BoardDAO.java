@@ -1,6 +1,7 @@
 package dao;
 
-import static db.JdbcUtil.*;
+import static db.JdbcUtil.close;
+import static db.JdbcUtil.commit;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -78,27 +79,18 @@ public class BoardDAO {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-		String sql = "select * from board order by board_re_ref desc ";
-		sql += "board_re_seq asc limit ?, 10";
-		
-		
 		ArrayList<BoardBean> articleList = new ArrayList<BoardBean>();
-		
 		BoardBean board = null;
-		
-		
-		
 		int startRow = (page - 1) * 10;
 		
+		
+		String sql = "select * from board order by bo_re_ref desc, bo_re_seq asc limit ?, 10";
 		
 		try {
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, startRow);
 			rs = pstmt.executeQuery();
-			
-			
 			
 			while(rs.next()) {
 				
@@ -112,15 +104,16 @@ public class BoardDAO {
 				board.setBo_re_ref(rs.getInt("bo_re_ref"));
 				board.setBo_re_lev(rs.getInt("bo_re_lev"));
 				board.setBo_re_seq(rs.getInt("bo_re_seq"));
-				board.setBo_readcount(rs.getInt("bo_name"));
+				board.setBo_readcount(rs.getInt("bo_readcount"));
 				board.setBo_date(rs.getDate("bo_date"));
+				articleList.add(board);
 				
 			}
-			
-			
+
 		} catch (Exception e) {
 			
 			System.out.println("selectArticleList 에러 발생" + e);
+			e.printStackTrace();
 			
 		} finally {
 			
@@ -132,9 +125,6 @@ public class BoardDAO {
 		return articleList;
 		
 	}
-	
-	
-	
 	
 	
 	
@@ -167,7 +157,7 @@ public class BoardDAO {
 				boardBean.setBo_re_ref(rs.getInt("bo_re_ref"));
 				boardBean.setBo_re_lev(rs.getInt("bo_re_lev"));
 				boardBean.setBo_re_seq(rs.getInt("bo_re_seq"));
-				boardBean.setBo_readcount(rs.getInt("bo_name"));
+				boardBean.setBo_readcount(rs.getInt("bo_readcount"));
 				boardBean.setBo_date(rs.getDate("bo_date"));
 				
 			}
@@ -176,7 +166,7 @@ public class BoardDAO {
 			
 		} catch (Exception e) {
 			
-			System.out.println("selectArticle 메소드 에러 : " + e);
+			System.out.println("[BoardDAO] selectArticle() : " + e);
 			
 		} finally {
 			
@@ -204,8 +194,6 @@ public class BoardDAO {
 		
 		int num = 0;
 		int insertCount = 0;
-		
-		
 		
 		try {
 
@@ -245,14 +233,9 @@ public class BoardDAO {
 			
 			insertCount = pstmt.executeUpdate();
 			
-			
-			
-			
 		} catch (Exception e) {
 			
-			
 			System.out.println("insertArticlea 메소드 에러" + e);
-			
 			
 			
 		} finally {
@@ -356,15 +339,16 @@ public class BoardDAO {
 		int updateCount = 0;
 		PreparedStatement pstmt = null;
 
-		String sql = "update board set bo_subject=?, bo_content=? where bo_num=? ";
+		String sql = "update board set bo_subject=?, bo_content=?, bo_name=? where bo_num=? ";
 		
 		
 		try {
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, article.getBo_subject());
-			pstmt.setString(1, article.getBo_content());
-			pstmt.setInt(1, article.getBo_num());
+			pstmt.setString(2, article.getBo_content());
+			pstmt.setString(3, article.getBo_name());
+			pstmt.setInt(4, article.getBo_num());
 			updateCount = pstmt.executeUpdate();
 			
 			

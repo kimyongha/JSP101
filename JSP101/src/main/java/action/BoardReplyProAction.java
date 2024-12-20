@@ -37,7 +37,7 @@ public class BoardReplyProAction implements Action {
 			
 			forward = new ActionForward();
 			forward.setRedirect(true);
-			forward.setPath("/boardList.bo?page="+ nowPage);
+			forward.setPath("/241218/board/boardList.bo?page="+ nowPage);
 			
 		} else {
 			
@@ -45,7 +45,7 @@ public class BoardReplyProAction implements Action {
 			PrintWriter out = response.getWriter();
 			
 			String msg = "<script>";
-			msg += "alert('댓글 등록에 실패하였습니다.'); ";
+			msg += "alert('답글 등록에 실패하였습니다.'); ";
 			msg += "history.back(); ";
 			msg += "</script>";
 			

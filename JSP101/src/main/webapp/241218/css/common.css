@@ -6,7 +6,7 @@ div, form, ul, li {margin:0;padding:0}
 
 ul {list-style:none}
 
-a {text-decoration:none}
+a {text-decoration:none;color:#333}
 
 
 fieldset {border:none}
@@ -50,15 +50,50 @@ form ul.form_btns li input {border:1px solid #ccc;padding:10px 20px;background:#
 
 
 #board.list {}
-#board.list table {width:100%;border-collapse:collapse;border-spacing:0;margin:0 0 20px 0;border-top:2px solid #333;}
+#board.list table {width:100%;border-collapse:collapse;border-spacing:0;margin:0 0 20px 0;border-top:2px solid #333;text-align:center;}
+
+#board.list table tr:hover {background:#f1f1f1}
+
 #board.list table th,
 #board.list table td {border:1px solid #ccc;border-left:0;border-right:0;padding:15px 20px}
+#board.list table td.sbjct {text-align:left}
 #board.list table td.no-data {text-align:center;padding:50px 20px}
 
 
-.pagination ul {display:flex;justify-content:center}
+#board.list .list_btns {display:flex;justify-content:flex-end}
+#board.list .list_btns li {border:1px solid #ccc;margin:0 10px 0 0}
+#board.list .list_btns li:last-child {margin-right:0}
+#board.list .list_btns li a {display:block;padding:10px 15px;font-size:14px}
+
+
+#board.list nav {display:flex;justify-content:center}
+#board.list nav ul li a {color:#333}
+#board.list nav ul li.on a {color:#fff;background:#333}
 
 
 
+/* .pagination ul {display:flex;justify-content:center}
+.pagination ul li.on a {font-weight:bold}
+ */
 
 
+#board.view {}
+
+
+#board.view h2.sbjct {border:1px solid #ccc;border-top:2px solid #333;border-left:0;border-right:0;padding:20px 10px}
+
+#board.view .view_info {display:flex;justify-content:center;align-items:center;}
+
+#board.view .view_info ul {display:flex;justify-content:center;align-items:center;margin:0 20px 0 0;}
+#board.view .view_info ul:last-child {margin-right:0}
+
+#board.view .view_info ul li {padding:5px;margin:0 10px 0 0;}
+#board.view .view_info ul li:last-child {margin-right:0}
+#board.view .view_info ul li:first-child {font-weight:bold}
+
+
+#board.view .contents {min-height:250px;padding:30px;border-bottom:1px solid #ccc;margin:0 0 20px 0}
+#board.view .view_btns {display:flex;justify-content:flex-end}
+#board.view .view_btns li {border:1px solid #ccc;margin:0 10px 0 0}
+#board.view .view_btns li:last-child {margin-right:0}
+#board.view .view_btns li a {display:block;padding:10px 15px;font-size:14px}

@@ -45,6 +45,7 @@ public class BoardModifyProAction implements Action {
 			article.setBo_num(bo_num);
 			article.setBo_subject(request.getParameter("bo_subject"));
 			article.setBo_content(request.getParameter("bo_content"));
+			article.setBo_name(request.getParameter("bo_name"));
 			
 			isModifySuccess = boardModifyProService.modifyArticle(article);
 			
@@ -66,7 +67,7 @@ public class BoardModifyProAction implements Action {
 				
 				forward = new ActionForward();
 				forward.setRedirect(true);
-				forward.setPath("/boardList.bo?bo_num=" + article.getBo_num());
+				forward.setPath("/241218/board/boardList.bo?bo_num=" + article.getBo_num());
 				
 			}
 			

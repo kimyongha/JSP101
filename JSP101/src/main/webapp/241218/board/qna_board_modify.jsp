@@ -1,44 +1,67 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+ <%@ page import="vo.BoardBean" %>
+    
+    
+    
+ <%
+ 
+ BoardBean article = (BoardBean) request.getAttribute("article");
+ 
+ %>
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>MVC MODEL2</title>
 <link rel="stylesheet" href="../css/common.css" />
+
+
+<script>
+
+function modifyBoard(){
+	
+	boardform.submit();
+	
+}
+
+
+</script>
+
+
 </head>
 <body>
 
 
-
 <div id="wrap">
-
-
 
 <div class="inner_wrap">
 
-
-
-	<form action="/241218/board/boardWritePro.bo" method="post" enctype="multipart/form-data" name="boardform">
+	<form action="boardModifyPro.bo" method="post" enctype="mulipart/form-data" name="boardform">
 		
-	
+		
+		<input type="hidden" name="bo_num" value="<%= article.getBo_num() %>" />
+		
 	<fieldset>
-		<legend>게시판 등록 폼</legend>
 	
-	
+		<legend>게시판 수정 폼</legend>
+		
 		<ul>
 			<li>제목</li>
-			<li><input type="text" name="bo_subject" id="" /> </li>
+			<li><input type="text" name="bo_subject" value="<%= article.getBo_subject() %>" /> </li>
 		</ul>
 	
 		<ul>
 			<li>작성자</li>
-			<li><input type="text" name="bo_name" id="" /> </li>
+			<li><input type="text" name="bo_name" value="<%= article.getBo_name() %>" /> </li>
 		</ul>
 	
 		<ul>
 			<li>내용</li>
-			<li><textarea name="bo_content" id="" cols="30" rows="10"></textarea> </li>
+			<li><textarea name="bo_content" id="" cols="30" rows="10"><%= article.getBo_content() %></textarea> </li>
 		</ul>
 	
 	

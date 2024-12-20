@@ -16,7 +16,6 @@ public class BoardDeleteProAction implements Action {
 		
 		ActionForward forward = null;
 		int bo_num = Integer.parseInt(request.getParameter("bo_num"));
-		
 		String nowPage = request.getParameter("page");
 		
 		
@@ -24,7 +23,7 @@ public class BoardDeleteProAction implements Action {
 		boolean isArticleWriter = boardDeleteProService.isArticleWriter(bo_num, request.getParameter("bo_pass"));
 		
 				
-		if(isArticleWriter) {
+		if(!isArticleWriter) {
 			
 			response.setContentType("text/html; charset=UTF-8");
 			
@@ -42,8 +41,6 @@ public class BoardDeleteProAction implements Action {
 		} else {
 			
 			boolean isDeleteSuccess = boardDeleteProService.removeArticle(bo_num);
-			
-			
 			
 			if(!isDeleteSuccess) {
 				
@@ -65,7 +62,7 @@ public class BoardDeleteProAction implements Action {
 				
 				forward = new ActionForward();
 				forward.setRedirect(true);
-				forward.setPath("/boardList.bo?page=" + nowPage);
+				forward.setPath("/241218/board/boardList.bo?page=" + nowPage);
 						
 			}
 			

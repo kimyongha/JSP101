@@ -48,7 +48,6 @@ public class BoardListAction implements Action {
 		ActionForward forward = new ActionForward();
 		forward.setPath("/241218/board/qna_board_list.jsp");
 		
-		
 		return forward;
 		
 	}

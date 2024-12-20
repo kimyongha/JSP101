@@ -23,7 +23,7 @@ public class BoardDetailAction implements Action {
 		request.setAttribute("page", page);
 		request.setAttribute("article", article);
 		
-		forward.setPath("/board/qna_board_view.jsp");
+		forward.setPath("/241218/board/qna_board_view.jsp");
 		
 		return forward;
 		

@@ -16,12 +16,10 @@
 </head>
 <body>
 
-
-
 <%
 
 BoardBean article = (BoardBean) request.getAttribute("article");
-
+String pageNum = (String) request.getAttribute("page");
 
 %>
 
@@ -33,38 +31,52 @@ BoardBean article = (BoardBean) request.getAttribute("article");
 <div class="inner_wrap">
 
 
-	<section id="boardView">
+	<section id="board" class="view">
 	
+	<h2 class="sbjct"><%= article.getBo_subject() %> </h2>
+	
+	<div class="view_info">
+	
+	<ul>
+		<li>작성자</li>
+		<li><%= article.getBo_name() %>  </li>
+	</ul>
+	
+	<ul>
+		<li>작성일</li>
+		<li><%= article.getBo_date() %>  </li>
+	</ul>
+	
+	<ul>
+		<li>조회수</li>
+		<li><%= article.getBo_readcount() %>  </li>
+	</ul>
+	
+	
+	</div>
+	
+	
+	
+	<div class="contents">
+	
+	<%= article.getBo_content() %>
+	
+	</div>
+	
+
+
+
+	
+
 		
-			<ul>
-				<li>제목</li>
-				<li><input type="text" name="bo_subject" id="" /> </li>
-			</ul>
+	<ul class="view_btns">
+	
+		<li><a href="boardReplyForm.bo?bo_num=<%= article.getBo_num() %>&page=<%= pageNum %>">답변</a></li>
+		<li><a href="boardModifyForm.bo?bo_num=<%= article.getBo_num() %>&page=<%= pageNum %>">수정</a></li>
+		<li><a href="boardDeleteForm.bo?bo_num=<%= article.getBo_num() %>&page=<%= pageNum %>">삭제</a></li>
+		<li><a href="boardList.bo?page=<%= pageNum %>">목록</a></li>
 		
-			<ul>
-				<li>작성자</li>
-				<li><input type="text" name="bo_name" id="" /> </li>
-			</ul>
-		
-			<ul>
-				<li>내용</li>
-				<li><textarea name="bo_content" id="" cols="30" rows="10"></textarea> </li>
-			</ul>
-		
-		
-			<ul class="attach">
-				<li>첨부파일</li>
-				<li><input type="file" name="bo_file" id="" /> </li>
-			</ul>
-		
-		
-		<ul class="view_btns">
-		<li><a href="boardReplyForm.bo?bo_num=<%= article.getBo_num() %>">답변</a></li>
-		<li><a href="boardModifyForm.bo?bo_num=<%= article.getBo_num() %>">수정</a></li>
-		<li><a href="boardDeleteForm.bo?bo_num=<%= article.getBo_num() %>">삭제</a></li>
-		<li><a href="boardList.bo?bo_num=<%= article.getBo_num() %>">목록</a></li>
-		
-		</ul>
+	</ul>
 	
 	</section>
 
