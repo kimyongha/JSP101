@@ -16,6 +16,7 @@ String nowPage = (String) request.getAttribute("page");
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../css/common.css" />
 </head>
 <body>
 
@@ -27,11 +28,12 @@ String nowPage = (String) request.getAttribute("page");
 		<section id="board" class="reply">
 
 
-			<form action="boardReplyPro.bo" method="post"
+			<form action="/241218/board/boardReplyPro.bo" method="post"
 				enctype="mulipart/form-data" name="boardform">
 
 				<input type="hidden" name="page" value="<%= nowPage %>" />
 				<input type="hidden" name="bo_num" value="<%= article.getBo_num() %>" />
+				<input type="hidden" name="bo_subject" value="<%= article.getBo_subject() %>" />
 				<input type="hidden" name="bo_re_ref" value="<%= article.getBo_re_ref() %>" />
 				<input type="hidden" name="bo_re_lev" value="<%= article.getBo_re_lev() %>" />
 				<input type="hidden" name="bo_re_seq" value="<%= article.getBo_re_seq() %>" />

@@ -74,7 +74,7 @@ public class BoardFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("/241218/board/qna_board_write.jsp");
 			
-		} else if(command.equals("/241218/board/boardWritePro.bo")) {
+		} else if(command.equals("/241218/board/boardWritePro.bo")) { // write process
 			
 			action = new BoardWriteProAction();
 			
@@ -88,7 +88,7 @@ public class BoardFrontController extends HttpServlet {
 				
 			}
 			
-		} else if(command.equals("/241218/board/boardModifyForm.bo")) { // 게시글 수정 페이지
+		} else if(command.equals("/241218/board/boardModifyForm.bo")) { // modify form
 			
 			action = new BoardModifyFormAction();
 			
@@ -102,7 +102,7 @@ public class BoardFrontController extends HttpServlet {
 				
 			}
 			
-		} else if(command.equals("/241218/board/boardModifyPro.bo")) { // 게시글 수정 프로세스 
+		} else if(command.equals("/241218/board/boardModifyPro.bo")) { // modify process
 			
 			action = new BoardModifyProAction();
 			
@@ -144,7 +144,7 @@ public class BoardFrontController extends HttpServlet {
 				
 			}
 			
-		} else if(command.equals("/boardReplyForm.bo")) {
+		} else if(command.equals("/241218/board/boardReplyForm.bo")) {
 			
 			action = new BoardReplyFormAction();
 			
