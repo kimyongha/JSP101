@@ -1,3 +1,4 @@
+<%@page import="java.util.Enumeration"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,6 +10,36 @@
 </head>
 <body>
 
+
+
+<%
+
+
+Enumeration e = session.getAttributeNames();
+
+while (e.hasMoreElements()) {
+	
+    String name = (String) e.nextElement();
+    Object value = session.getAttribute(name); 
+    
+    // value가 Integer인 경우, int로 변환
+    if (value instanceof Integer) {
+    	
+        int intValue = (Integer) value;  // Integer -> int로 언박싱
+        out.println(name + " : " + intValue);
+        
+    } else {
+    	
+        out.println(name + " : " + value);  
+        
+    }
+    
+    out.println("<br>");
+}
+
+
+
+%>
 
 
 <div id="wrap">
@@ -33,7 +64,7 @@
 	
 		<ul>
 			<li>작성자</li>
-			<li><input type="text" name="bo_name" id="" /> </li>
+			<li><input type="text" name="bo_name" id="" value="<%= session.getAttribute("mb_name") %>"/> </li>
 		</ul>
 	
 		<ul>
@@ -61,7 +92,7 @@
 	<ul class="form_btns">
 	
 	<li><input type="submit" value="등록" /></li>
-	<li><input type="reset" value="취소" /></li>
+	<li><input type="reset" value="취소" onclick="javascript:history.go(-1);"/></li>
 	
 	</ul>
 		

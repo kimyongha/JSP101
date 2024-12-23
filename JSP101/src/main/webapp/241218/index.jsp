@@ -13,6 +13,7 @@
 
 
 <a href="/241218/board/boardWriteForm.bo">게시판 등록</a>
+<a href="/241218/board/boardList.bo">게시판 목록</a>
 
 
 
@@ -33,7 +34,7 @@ String mb_id = (String) session.getAttribute("mb_id");
 
 <% } else { %>
 
-<a href="/241218/member/logout.bo">로그아웃</a>
+<a href="/241218/member/logout">로그아웃</a>
 
 <% } // endif %>
 

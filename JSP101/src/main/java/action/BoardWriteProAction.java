@@ -69,7 +69,7 @@ public class BoardWriteProAction implements Action {
 			
 			forward = new ActionForward();
 			forward.setRedirect(true);
-			//forward.setPath("/241218/board/boardList.bo");
+			forward.setPath("/241218/board/boardList.bo");
 			
 		}
 		

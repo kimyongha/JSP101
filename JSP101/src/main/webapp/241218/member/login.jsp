@@ -19,7 +19,7 @@
 		<section id="login">
 		
 		
-		<form action="" id="loginFrm" method="post">
+		<form action="login" id="loginFrm" method="post">
 		
 		
 		<fieldset>
