@@ -18,5 +18,30 @@
 
 
 
+
+<%
+
+String mb_id = (String) session.getAttribute("mb_id");
+
+
+%>
+
+
+<% if(mb_id == null) { %>
+
+<a href="/241218/member/login.jsp">로그인</a>
+
+<% } else { %>
+
+<a href="/241218/member/logout.bo">로그아웃</a>
+
+<% } // endif %>
+
+
+
+
+
+
+
 </body>
 </html>
