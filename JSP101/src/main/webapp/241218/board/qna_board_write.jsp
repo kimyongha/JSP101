@@ -39,6 +39,8 @@ while (e.hasMoreElements()) {
 
 
 
+String mb_name = (String) session.getAttribute("mb_name");
+
 %>
 
 
@@ -64,7 +66,7 @@ while (e.hasMoreElements()) {
 	
 		<ul>
 			<li>작성자</li>
-			<li><input type="text" name="bo_name" id="" value="<%= session.getAttribute("mb_name") %>"/> </li>
+			<li><input type="text" name="bo_name" id="" value="<% if(mb_name != null) out.println(mb_name); %>"/> </li>
 		</ul>
 	
 		<ul>

@@ -23,21 +23,17 @@ public class BoardWriteProAction implements Action {
 		BoardBean boardBean = null;
 		
 		String realFolder = "";
-		String saveFolder = "";
+		String saveFolder = "/241218/boardUpload";;
 		
 		int fileSize = 5 * 1024 * 1024;
-		
+
 		ServletContext context = request.getServletContext();
-		realFolder = context.getRealPath(saveFolder);
+		//realFolder = context.getRealPath(saveFolder);
+		realFolder = "C:\\Users\\kj\\Desktop\\myGit\\JSP101\\JSP101\\src\\main\\webapp\\241218\\boardUpload";  // 로컬 경로 지정
+
 		
-		MultipartRequest multi = new MultipartRequest(
-				request,
-				realFolder,
-				fileSize,
-				"UTF-8",
-				new DefaultFileRenamePolicy()
-				);
 		
+		MultipartRequest multi = new MultipartRequest(request,realFolder,fileSize,"UTF-8",new DefaultFileRenamePolicy());
 		
 		
 		boardBean = new BoardBean();
